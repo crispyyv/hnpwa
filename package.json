@@ -1,0 +1,57 @@
+{
+  "name": "hnpwa",
+  "version": "1.0.0",
+  "description": "Tecnhical task for momentum bots",
+  "main": "index.js",
+  "repository": "https://github.com/crispyyv/hnpwa",
+  "author": "Valdyslab Kucehryaviy <crispyyv@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "webpack-cli serve --mode=development --env development --open --hot",
+    "build": "webpack --mode=production --env production --progress",
+    "lint": "eslint './src/**/*.{ts,tsx}'",
+    "lint:fix": "eslint './src/**/*.{ts,tsx}' --fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "eslint --fix"
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.31",
+    "@types/react": "^17.0.2",
+    "@types/react-dom": "^17.0.1",
+    "@types/webpack": "^4.41.26",
+    "@types/webpack-dev-server": "^3.11.1",
+    "@typescript-eslint/eslint-plugin": "^4.15.2",
+    "@typescript-eslint/parser": "^4.15.2",
+    "eslint": "^7.20.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-auto-import": "^0.1.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "fork-ts-checker-webpack-plugin": "^6.1.0",
+    "html-webpack-plugin": "^5.2.0",
+    "prettier": "^2.2.1",
+    "ts-loader": "^8.0.17",
+    "ts-node": "^9.1.1",
+    "tsconfig-paths-webpack-plugin": "^3.3.0",
+    "typescript": "^4.2.2",
+    "webpack": "^5.24.2",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "styled-components": "^5.2.1",
+    "swr": "^0.4.2"
+  }
+}
