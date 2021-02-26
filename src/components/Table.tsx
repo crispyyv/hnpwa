@@ -3,7 +3,14 @@ import { field } from "src/constants";
 import useOnScreen from "src/hooks/useOnScreen";
 import { getKey, getTableInfo } from "src/libs/fetcher";
 import { useSWRInfinite } from "swr";
-import { Thead, StyledTable, Row, Truncated } from "./styled/table";
+import {
+  Thead,
+  StyledTable,
+  Row,
+  Truncated,
+  FloatedButton,
+  MobileTd,
+} from "./styled/table";
 
 export interface TableProps {
   type: string;
@@ -66,6 +73,7 @@ export const Table = ({ type }: TableProps): JSX.Element => {
             <Row>
               {field.map((el, idx) => (
                 <th
+                  className={`${el === "title" ? "mobile" : ""}`}
                   onClick={() =>
                     setSortConfig({
                       type: el,
@@ -87,9 +95,9 @@ export const Table = ({ type }: TableProps): JSX.Element => {
           <tbody>
             {renderedData.map((el, idx) => (
               <Row key={idx}>
-                <td>
+                <MobileTd>
                   <Truncated>{el.title || "no info"}</Truncated>
-                </td>
+                </MobileTd>
                 <td>{el.domain || "no info"}</td>
                 <td>{new Date(el.time * 1000).toLocaleString() || "-"}</td>
               </Row>
@@ -97,6 +105,16 @@ export const Table = ({ type }: TableProps): JSX.Element => {
           </tbody>
         </StyledTable>
       )}
+      <FloatedButton
+        onClick={() =>
+          setSortConfig({
+            type: "date",
+            changeDirection: !sortConfig.changeDirection,
+          })
+        }
+      >
+        Sort
+      </FloatedButton>
       <div ref={ref}>
         {isLoadingMore ? "loading..." : isReachingEnd ? "No more" : ""}
       </div>
