@@ -108,7 +108,7 @@ export const Table = ({ type }: TableProps): JSX.Element => {
       <FloatedButton
         onClick={() =>
           setSortConfig({
-            type: "date",
+            type: "time",
             changeDirection: !sortConfig.changeDirection,
           })
         }
